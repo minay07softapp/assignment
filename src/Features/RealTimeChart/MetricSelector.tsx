@@ -9,8 +9,6 @@ const query = gql`
   }
 `;
 
-export const staticMetrics = ['tubingPressure', 'waterTemp', 'flareTemp', 'oilTemp', 'casingPressure', 'injValveOpen'];
-
 const MetricSelector = () => {
   const { loading, error, data } = useQuery<any>(query);
 
