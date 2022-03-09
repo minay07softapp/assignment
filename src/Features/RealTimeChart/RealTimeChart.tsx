@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import MetricSelector from './MetricSelector';
+import ApolloProvider from './ApolloProvider';
 
 const useStyles = makeStyles({
   box: {
@@ -23,4 +24,8 @@ const RealTimeChart: FC = () => {
   );
 };
 
-export default () => <RealTimeChart />;
+export default () => (
+  <ApolloProvider>
+    <RealTimeChart />
+  </ApolloProvider>
+);
