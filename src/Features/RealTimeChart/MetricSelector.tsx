@@ -9,16 +9,15 @@ const query = gql`
   }
 `;
 
-const MetricSelector = () => {
+const MetricSelector = (props: { handleSelect: (arg0: any) => void }) => {
   const { loading, error, data } = useQuery<any>(query);
 
   if (loading) return <LinearProgress />;
   if (error) return <Typography color="error">{error}</Typography>;
   const metrics = data.getMetrics;
   const options = metrics.map((metric: String) => ({ label: metric, value: metric }));
-
-  const handleSelect = (selected: any) => {
-    console.log({ selected });
+  const onSelct = (values: any) => {
+    props.handleSelect(values);
   };
   return (
     <div style={{ width: 600 }}>
@@ -31,7 +30,7 @@ const MetricSelector = () => {
         isMulti
         name="metrics"
         options={options}
-        onChange={handleSelect}
+        onChange={onSelct}
       />
     </div>
   );
